@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { useScrollTop } from "../lib/useScrollTop";
 
 const Container = styled.div`
   padding: 30px 25px;
@@ -21,7 +22,6 @@ const ConWrap = styled.div`
 `;
 const Con = styled.div`
   width: 100%;
-  height: 100%;
   border: 1px solid #fff;
   border-radius: 20px;
   display: flex;
@@ -36,6 +36,7 @@ const ImgWrap = styled.div`
 
 const Imge = styled.div`
   width: 100%;
+
   margin-right: 20px;
 `;
 
@@ -57,8 +58,6 @@ const Desc = styled.p`
   margin-bottom: 50px;
   line-height: 18px;
 `;
-
-const Url = styled.p``;
 
 const project = [
   {
@@ -110,10 +109,11 @@ const project = [
 ];
 
 export const Home = () => {
+  useScrollTop();
   return (
     <Container>
       <Wrap>
-        {project.map((data) => (
+        {project?.map((data) => (
           <Link key={data.id} to={data.url}>
             <ConWrap>
               <Con>
@@ -130,7 +130,7 @@ export const Home = () => {
                   <Title>{data.name}</Title>
                   <Text>{data.nameDesc}</Text>
                   <Desc>{data.desc}</Desc>
-                  <Url>{data.url}</Url>
+                  <Link to={data.url}>{data.url}</Link>
                 </TextWrap>
               </Con>
             </ConWrap>
