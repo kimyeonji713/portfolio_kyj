@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { useScrollTop } from "../lib/useScrollTop";
 import { project } from "../components/project";
+import { PageTitle } from "../components/PageTitle";
+import { TopButton } from "./components/TopButton";
 
 const Container = styled.div`
   padding: 30px 25px;
@@ -13,16 +15,17 @@ const Wrap = styled.div`
   height: 100%;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  row-gap: 40px;
+  row-gap: 30px;
   column-gap: 30px;
 `;
 
 const ConWrap = styled.div`
   width: 100%;
-  height: 650px;
 `;
 const Con = styled.div`
   width: 100%;
+  height: 650px;
+
   border: 1px solid #fff;
   border-radius: 20px;
   display: flex;
@@ -64,6 +67,7 @@ export const Home = () => {
   useScrollTop();
   return (
     <Container>
+      <PageTitle title={"김연지"} />
       <Wrap>
         {project?.map((data) => (
           <Link key={data.id} to={data.url}>
@@ -89,6 +93,7 @@ export const Home = () => {
           </Link>
         ))}
       </Wrap>
+      <TopButton />
     </Container>
   );
 };
