@@ -9,6 +9,7 @@ const Container = styled.div`
   padding: 30px 25px;
   width: 100%;
   min-height: 100vh;
+  margin-top: 40px;
 `;
 const Wrap = styled.div`
   width: 100%;
@@ -63,6 +64,19 @@ const Desc = styled.p`
   line-height: 18px;
 `;
 
+const Git = styled.div`
+  h4 {
+    margin-bottom: 5px;
+  }
+  margin-bottom: 20px;
+`;
+
+const Site = styled.div`
+  h4 {
+    margin-bottom: 5px;
+  }
+`;
+
 export const Home = () => {
   useScrollTop();
   return (
@@ -70,27 +84,32 @@ export const Home = () => {
       <PageTitle title={"김연지"} />
       <Wrap>
         {project?.map((data) => (
-          <Link key={data.id} to={data.url}>
-            <ConWrap>
-              <Con>
-                <ImgWrap>
-                  <Imge>
-                    <img src={data.img_1} alt={data.name} />
-                  </Imge>
+          <ConWrap key={data.id}>
+            <Con>
+              <ImgWrap>
+                <Imge>
+                  <img src={data.img_1} alt={data.name} />
+                </Imge>
 
-                  <Imge>
-                    <img src={data.img_2} alt={data.name} />
-                  </Imge>
-                </ImgWrap>
-                <TextWrap>
-                  <Title>{data.name}</Title>
-                  <Text>{data.nameDesc}</Text>
-                  <Desc>{data.desc}</Desc>
-                  <Link to={data.url}>{data.url}</Link>
-                </TextWrap>
-              </Con>
-            </ConWrap>
-          </Link>
+                <Imge>
+                  <img src={data.img_2} alt={data.name} />
+                </Imge>
+              </ImgWrap>
+              <TextWrap>
+                <Title>{data.name}</Title>
+                <Text>{data.nameDesc}</Text>
+                <Desc>{data.desc}</Desc>
+                <Git>
+                  <h4>깃허브 주소</h4>
+                  <Link to={data.url}>{data.gitUrl}</Link>
+                </Git>
+                <Site>
+                  <h4>배포 주소</h4>
+                  <Link to={data.url}>{data.deployUrl}</Link>
+                </Site>
+              </TextWrap>
+            </Con>
+          </ConWrap>
         ))}
       </Wrap>
       <TopButton />
