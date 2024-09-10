@@ -86,26 +86,32 @@ export const Home = () => {
         {project?.map((data) => (
           <ConWrap key={data.id}>
             <Con>
-              <ImgWrap>
-                <Imge>
-                  <img src={data.img_1} alt={data.name} />
-                </Imge>
+              <Link to={data.deployUrl} target="_blank">
+                <ImgWrap>
+                  <Imge>
+                    <img src={data.img_1} alt={data.name} />
+                  </Imge>
 
-                <Imge>
-                  <img src={data.img_2} alt={data.name} />
-                </Imge>
-              </ImgWrap>
+                  <Imge>
+                    <img src={data.img_2} alt={data.name} />
+                  </Imge>
+                </ImgWrap>
+              </Link>
               <TextWrap>
                 <Title>{data.name}</Title>
                 <Text>{data.nameDesc}</Text>
                 <Desc>{data.desc}</Desc>
                 <Git>
                   <h4>깃허브 주소</h4>
-                  <Link to={data.url}>{data.gitUrl}</Link>
+                  <Link to={data.gitUrl} target="_blank">
+                    {data.gitUrl}
+                  </Link>
                 </Git>
                 <Site>
                   <h4>배포 주소</h4>
-                  <Link to={data.url}>{data.deployUrl}</Link>
+                  <Link to={data.deployUrl} target="_blank">
+                    {data.deployUrl}
+                  </Link>
                 </Site>
               </TextWrap>
             </Con>
